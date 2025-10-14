@@ -1,4 +1,5 @@
-# Caesar Cipher Tool (encryption only)
+# Caesar Cipher Tool
+# Note: Encryption only
 # Programmed by Martin Eesmaa (2025)
 # License: MIT
 # Source code: https://github.com/MartinEesmaa/certiv-pythonst
