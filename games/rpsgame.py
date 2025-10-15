@@ -5,6 +5,7 @@
 # Script language version: Python 3
 # Filename: rpsgame.py
 # Date: 14.10.2025
+# Updated: 15.10.2025
 
 """
 This activity requires an algorithmic solution and corresponding script 
@@ -20,6 +21,8 @@ The solution must:
 - Output score (depending on choices)
 - Display "Thank you for playing" message
 """
+
+import getpass
 
 def rpsgame():
     print("\nWelcome to Rock, Paper, Scissors game!\n")
@@ -37,8 +40,8 @@ def rpsgame():
         print("Player 2 name cannot be empty including spaces. Please enter a valid name.")
     print(f"Hello, {player1} and {player2}! Let's start the game.")
     choices = ['rock', 'paper', 'scissors']
-    score1 = 0
-    score2 = 0
+    shorthand = {'r': 'rock', 'p': 'paper', 's': 'scissors'}
+    score1, score2, tie = 0, 0, 0
     while True:
         try:
             rounds = int(input("Enter number of rounds to play: "))
@@ -51,19 +54,22 @@ def rpsgame():
     for round in range(1, rounds + 1):
         print(f"\nRound {round}")
         while True:
-            choice1 = input(f"{player1}, enter your choice (rock/paper/scissors): ").lower()
+            choice1 = getpass.getpass(f"{player1}, enter your choice (rock/paper/scissors or r/p/s): ").lower()
+            choice1 = shorthand.get(choice1, choice1)
             if choice1 not in choices:
-                print("Invalid choice for Player 1! Please choose rock, paper, or scissors.")
+                print("Invalid choice for Player 1! Please choose rock, paper, or scissors (or r/p/s).")
             else:
                 break
         while True:
-            choice2 = input(f"{player2}, enter your choice (rock/paper/scissors): ").lower()
+            choice2 = getpass.getpass(f"{player2}, enter your choice (rock/paper/scissors or r/p/s): ").lower()
+            choice2 = shorthand.get(choice2, choice2)
             if choice2 not in choices:
-                print("Invalid choice for Player 2! Please choose rock, paper, or scissors.")
+                print("Invalid choice for Player 2! Please choose rock, paper, or scissors (or r/p/s).")
             else:
                 break
         if choice1 == choice2:
             print("It's a tie!")
+            tie += 1
         elif (choice1 == 'rock' and choice2 == 'scissors') or \
              (choice1 == 'paper' and choice2 == 'rock') or \
              (choice1 == 'scissors' and choice2 == 'paper'):
@@ -79,6 +85,7 @@ def rpsgame():
         print(f"Congratulations {player2}, you are the winner!")
     else:
         print("Well, that is a tie!")
+    print(f"Ties count: {tie}")
     print("That is the end of the game.")
 
 while True:
