@@ -66,10 +66,10 @@ if not prepared_text:
 ciphertext = ""
 for char in prepared_text:
     if char.isupper():
-        shifted = (ord(char) - ord('A') - key) % 26 + ord('A')
+        shifted = (ord(char) - ord('A') + key) % 26 + ord('A')
         ciphertext += chr(shifted)
     elif char.islower():
-        shifted = (ord(char) - ord('a') - key) % 26 + ord('a')
+        shifted = (ord(char) - ord('a') + key) % 26 + ord('a')
         ciphertext += chr(shifted)
     elif char == '.' or char == ' ' or char.isdigit():
         ciphertext += char
