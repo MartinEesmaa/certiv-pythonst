@@ -1,0 +1,4 @@
+delighted
+disgusted
+cheerful
+frustrated
